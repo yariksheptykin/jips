@@ -14,15 +14,14 @@ fn main() {
 }
 
 
-pub fn hello() -> &'static str {
+fn hello() -> &'static str {
     "Hello, world!"
 }
 
 #[cfg(test)]
 mod tests {
     #[test]
-    fn it_works() {
-        let result = 2 + 2;
-        assert_eq!(result, 4);
+    fn it_greets() {
+        assert_eq!("Hello, world!", hello());
     }
 }
