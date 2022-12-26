@@ -12,7 +12,3 @@ fn main() {
     // Print text to the console
     println!("{}", hello());
 }
-
-fn hello() -> &'static str {
-    "Hello, world!"
-}
