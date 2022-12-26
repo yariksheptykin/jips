@@ -13,11 +13,6 @@ fn main() {
     println!(hello());
 }
 
-#[test]
-fn test_hello() {
-    assert_eq!(hello(), "Hello, world!");
-}
-
 fn hello() -> &'static str {
     "Hello, world!"
 }
