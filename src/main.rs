@@ -12,3 +12,8 @@ fn main() {
     // Print text to the console
     println!("{}", hello());
 }
+
+
+pub fn hello() -> &'static str {
+    "Hello, world!"
+}
