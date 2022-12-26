@@ -29,7 +29,8 @@ image: "rust:latest"
 test:cargo:
   script:
     - rustc --version && cargo --version  # Print version info for debugging
-    - cargo test --workspace --verbose
+    - rustc hello.rs
+    # - cargo test --workspace --verbose
 
 # Optional: Use a third party library to generate gitlab junit reports
 # test:junit-report:
@@ -41,8 +42,3 @@ test:cargo:
 #     when: always
 #     reports:
 #       junit: $CI_PROJECT_DIR/tests/*.xml
-
-deploy:
-  stage: deploy
-  script: echo "Define your deployment script!"
-  environment: production
