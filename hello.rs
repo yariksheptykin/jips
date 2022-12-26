@@ -12,3 +12,9 @@ fn main() {
     // Print text to the console
     println!("Hello World!");
 }
+
+#[test]
+fn it_works() {
+  let result = 2 + 2;
+  assert_eq!(result, 4);
+}
