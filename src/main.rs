@@ -20,6 +20,7 @@ fn hello() -> &'static str {
 
 #[cfg(test)]
 mod tests {
+    use super::*;
     #[test]
     fn it_greets() {
         assert_eq!("Hello, world!", hello());
