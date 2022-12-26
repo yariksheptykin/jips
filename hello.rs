@@ -10,11 +10,14 @@ fn main() {
     // Statements here are executed when the compiled binary is called
 
     // Print text to the console
-    println!("Hello World!");
+    println!(hello());
 }
 
 #[test]
-fn it_works() {
-  let result = 2 + 2;
-  assert_eq!(result, 4);
+fn test_hello() {
+    assert_eq!(hello(), "Hello, world!");
+}
+
+fn hello() -> &'static str {
+    "Hello, world!"
 }
