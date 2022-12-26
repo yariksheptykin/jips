@@ -30,6 +30,7 @@ test:cargo:
   script:
     - rustc --version && cargo --version  # Print version info for debugging
     - rustc hello.rs
+    - ./hello
     # - cargo test --workspace --verbose
 
 # Optional: Use a third party library to generate gitlab junit reports
