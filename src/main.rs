@@ -6,10 +6,7 @@
 // You can always return to the original code by clicking the "Reset" button ->
 
 extern crate jsonpath_lib as jsonpath;
-extern crate serde_json;
-
-use jsonpath::Selector;
-use serde_json::Value;
+#[macro_use] extern crate serde_json;
 
 // This is the main function
 fn main() {
@@ -19,25 +16,54 @@ fn main() {
     println!("ok");
 }
 
-fn json_path_value(json: &str, json_path: &str) -> Option<Value> {
-    let json: Value = serde_json::from_str(json).unwrap();
-    match Selector::new(json_path) {
-        Ok(selector) => selector.find(&json).next().cloned(),
-        Err(e) => {
-            println!("Error: {:?}", e);
-            None
-        }
-    }
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
     #[test]
     fn it_can_jsonpath() {
-        let json = r#"{ "name": { "first": "John", "last": "Doe" }, "age": 30 }"#;
-        let json_path = "$.name.first";
-        let value = json_path_value(json, json_path);
-        assert_eq!(value, Some(json!("John")));
+        let json_obj = json!({
+    "store": {
+        "book": [
+            {
+                "category": "reference",
+                "author": "Nigel Rees",
+                "title": "Sayings of the Century",
+                "price": 8.95
+            },
+            {
+                "category": "fiction",
+                "author": "Evelyn Waugh",
+                "title": "Sword of Honour",
+                "price": 12.99
+            },
+            {
+                "category": "fiction",
+                "author": "Herman Melville",
+                "title": "Moby Dick",
+                "isbn": "0-553-21311-3",
+                "price": 8.99
+            },
+            {
+                "category": "fiction",
+                "author": "J. R. R. Tolkien",
+                "title": "The Lord of the Rings",
+                "isbn": "0-395-19395-8",
+                "price": 22.99
+            }
+        ],
+        "bicycle": {
+            "color": "red",
+            "price": 19.95
+        }
+    },
+    "expensive": 10
+});
+
+let mut selector = jsonpath::selector(&json_obj);
+
+assert_eq!(selector("$.store.book[*].author").unwrap(),
+            vec![
+                "Nigel Rees", "Evelyn Waugh", "Herman Melville", "J. R. R. Tolkien"
+            ]);
     }
 }
