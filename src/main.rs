@@ -19,16 +19,17 @@ fn main() {
     println!("ok");
 }
 
+
 fn json_path_value(json: &str, json_path: &str) -> Option<Value> {
     let json: Value = serde_json::from_str(json).unwrap();
-    let selector = match Selector::new(json_path) {
-        Ok(selector) => selector,
+    let selector = Selector::new(json_path);
+    match selector {
+        Ok(selector) => selector.find(&json).next().cloned(),
         Err(e) => {
             println!("Error: {:?}", e);
-            return None;
+            None
         }
-    };
-    selector.find(&json).next().cloned()
+    }
 }
 
 
