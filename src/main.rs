@@ -16,7 +16,7 @@ fn main() {
     // Statements here are executed when the compiled binary is called
 
     // Print text to the console
-    println!("{}", hello());
+    println!("ok");
 }
 
 fn json_path_value(json: &str, json_path: &str) -> Option<Value> {
