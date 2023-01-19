@@ -1,18 +1,7 @@
-// This is a comment, and is ignored by the compiler
-// You can test this code by clicking the "Run" button over there ->
-// or if you prefer to use your keyboard, you can use the "Ctrl + Enter" shortcut
-
-// This code is editable, feel free to hack it!
-// You can always return to the original code by clicking the "Reset" button ->
-
 extern crate jsonpath_lib as jsonpath;
 #[macro_use] extern crate serde_json;
 
-// This is the main function
 fn main() {
-    // Statements here are executed when the compiled binary is called
-
-    // Print text to the console
     println!("ok");
 }
 
